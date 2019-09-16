@@ -16,5 +16,11 @@ MongoClient.connect(url, {poolSize:10, useNewUrlParser: true, useUnifiedTopology
         const db = client.db(dbName);
 
         require('./app/add.js')(db,app);
+        require('./app/read.js')(db,app);
+        require('./app/update.js')(db,app, ObjectID);
+        require('./app/remove.js')(db,app, ObjectID);
+
+    // Start the server listening on port 3000.
+    require('./listen.js')(http);
 })
 
