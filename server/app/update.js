@@ -6,11 +6,11 @@ module.exports = function(db, app, ObjectID) {
             return res.sendStatus(400);
         }
         product = req.body;
-        var objectid = new ObjectID(product.objid);
+        var objectid = new ObjectID(product._id);
         const collection = db.collection('products');
         collection.updateOne({_id:objectid}, {$set:{name:product.name, description:product.description, price:product.price, units:product.units}}, () => {
             // Return a response to the client to let them know the update was successful
-            res.send({'ok': product.objid});
+            res.send({'ok': product._id});
         })
     });
 }

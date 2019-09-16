@@ -1,0 +1,22 @@
+<div class="container">
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Units</th>
+        </tr>
+        <tr style="padding-top:20px;" *ngFor="let product of products">
+            <td>{{product.id}}</td>
+            <td>{{product.name}}</td>
+            <td>{{product.description}}</td>
+            <td>{{product.price}}</td>
+            <td>{{product.units}}</td>
+            <td>
+                <span class="btn btn-primary" [routerLink]="['/product-edit', product._id]"><i class="fas fa-edit"></i> Edit</span>
+                &nbsp; <span class="btn btn-danger" (click)="deleteproduct(product._id)"><i class="fas fa-trash"></i> Delete</span>
+            </td>
+        </tr>
+    </table>
+</div>

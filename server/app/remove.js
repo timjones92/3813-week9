@@ -1,6 +1,5 @@
 module.exports = function(db, app, ObjectID) {
     // Route to delete a single product
-    var result;
     app.post('/api/delete', function(req, res) {
         if (!req.body) {
             return res.sendStatus(400);
@@ -14,7 +13,7 @@ module.exports = function(db, app, ObjectID) {
             // Get a new listing of all items in the database and return to client
             collection.find({}).toArray((err, data) => {
                 // Return a response to the client to let them know the delete was successful
-                res.send({'ok': product.objid});
+                res.send(data);
             });
         });
     });
